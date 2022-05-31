@@ -26,15 +26,15 @@ function encode(str) {
     return result;
 }
 
+
+//wrap the regex in capture groups to get different arguments that are more useful
 function decode(str) {
-    const regex = /\d\w/g
-    const result = str.replace(regex, function(match) {
-        const num = match[0];
-        const char = match[1];
+    const regex = /(\d+)(\w)/g
+    const result = str.replace(regex, function(x, num, char) {
         return char.repeat(num)
     })
     return result
 }
 
 console.log(encode('wwwiiuuuu'));
-console.log(decode('2L3o4l'));
+console.log(decode('12L3o4l'));
